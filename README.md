@@ -9,7 +9,7 @@ Tenha certeza absoluta do dispositivo (ex: /dev/sdc) que você irá usar. O coma
 ✅ Passo a passo
 1. Baixe a imagem multitool
 
-🔗 Clique aqui para baixar [multitool.img](https://github.com/gloriosotv/LibreELEC/releases/download/LibreELEC/multitool.img)
+🔗 Clique aqui para baixar [multitool.img](https://github.com/glorioso-tv/LibreELEC/releases/download/LibreELEC/multitool.img)
  Descubra qual é seu dispositivo
 
 Conecte o cartão SD ou pendrive e execute:
@@ -59,7 +59,7 @@ Depois do backup:
 
 Exemplo de imagem recomendada:
 
-🔗 [LibreELEC](https://github.com/gloriosotv/LibreELEC/releases/download/LibreELEC/LibreELEC-RK322X.arm-12.0-nightly-20250218-6a1e364-rk322x.img)
+🔗 [LibreELEC](https://github.com/glorioso-tv/LibreELEC/releases/download/LibreELEC/LibreELEC-RK322X.arm-12.0-nightly-20250218-6a1e364-rk322x.img)
 🧩 Instalando o sistema na TV Box
 
     Coloque o cartão de volta na TV Box.
