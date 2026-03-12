@@ -1,77 +1,162 @@
-As Imagens que estão aqui foi testada com a memoria eMMC então não sei se funciona em nand teste e ver mais sempre façam backup da rom ...
+# OBSERVAÇÃO IMPORTANTE
+# As imagens deste tutorial foram testadas apenas em TV Boxes com memória eMMC.
+# Não sei se funciona em dispositivos com memória NAND.
+# Sempre faça backup da ROM original antes de qualquer modificação.
 
-🛠️ Como gravar multitool.img no cartão SD ou pendrive (Linux)
+############################################################
+# COMO GRAVAR multitool.img NO CARTÃO SD OU PENDRIVE (LINUX)
+############################################################
 
-Este tutorial mostra como gravar a imagem multitool.img em um cartão microSD ou pendrive para uso em TV Boxes compatíveis com LibreELEC.
-⚠️ Aviso
+# Este tutorial ensina como gravar o arquivo multitool.img em um
+# cartão microSD ou pendrive para usar em TV Boxes compatíveis
+# com LibreELEC.
 
-Tenha certeza absoluta do dispositivo (ex: /dev/sdc) que você irá usar. O comando dd irá apagar tudo nele!
-✅ Passo a passo
-1. Baixe a imagem multitool
+############################################################
+# ATENÇÃO
+############################################################
 
-🔗 Clique aqui para baixar [multitool.img](https://github.com/glorioso-tv/LibreELEC/releases/download/LibreELEC/multitool.img)
- Descubra qual é seu dispositivo
+# Tenha certeza absoluta do dispositivo que você vai usar.
+# O comando "dd" apaga completamente o dispositivo escolhido.
+# Se escolher o dispositivo errado, você pode apagar seu HD ou SSD.
 
-Conecte o cartão SD ou pendrive e execute:
+############################################################
+# PASSO 1 - BAIXAR A IMAGEM DO MULTITOOL
+############################################################
+
+# Baixe a imagem:
+
+# https://github.com/glorioso-tv/LibreELEC/releases/download/LibreELEC/multitool.img
+
+
+############################################################
+# PASSO 2 - DESCOBRIR O DISPOSITIVO DO CARTÃO OU PENDRIVE
+############################################################
+
+# Conecte o cartão SD ou pendrive no computador e execute:
 
 lsblk
 
-Anote o caminho do dispositivo (ex: /dev/sdc). Não use partições como /dev/sdc1.
+# Você verá algo parecido com isto:
 
-3. Grave a imagem no dispositivo
+# sda
+# sdb
+# sdc
 
+# Normalmente o cartão ou pendrive será algo como:
+
+# /dev/sdc
+
+# IMPORTANTE:
+# Use apenas o dispositivo principal.
+# NÃO use partições como /dev/sdc1
+
+############################################################
+# PASSO 3 - GRAVAR A IMAGEM
+############################################################
+
+# Execute o comando abaixo:
 
 sudo dd if=multitool.img of=/dev/sdX bs=4M status=progress
 
+# Substitua sdX pelo dispositivo correto.
 
-Substitua /dev/sdX pelo nome correto do seu dispositivo, como /dev/sdc.
-4. Garante que todos os dados sejam gravados
+# Exemplo:
+
+# sudo dd if=multitool.img of=/dev/sdc bs=4M status=progress
+
+# Aguarde o processo terminar.
+
+############################################################
+# PASSO 4 - GARANTIR QUE OS DADOS FORAM GRAVADOS
+############################################################
 
 sync
 
+# Esse comando garante que todos os dados foram gravados
+# no cartão ou pendrive, evitando corrupção.
 
-Esse comando força a gravação de todos os dados em cache no dispositivo — evita corrupção.
-5. Ejete o dispositivo com segurança
+############################################################
+# PASSO 5 - REMOVER O DISPOSITIVO COM SEGURANÇA
+############################################################
 
 sudo eject /dev/sdc
 
 
-📺 Usando o Multitool na TV Box
+############################################################
+# USANDO O MULTITOOL NA TV BOX
+############################################################
 
-    Insira o cartão com Multitool na TV Box desligada.
+# 1. Insira o cartão SD na TV Box desligada.
 
-    Conecte o cabo HDMI e a fonte de energia — a TV Box irá iniciar no Multitool.
+# 2. Conecte:
+#    - Cabo HDMI
+#    - Fonte de energia
 
-    Faça um backup da NAND ou eMMC (memória interna) da TV Box.
-    Use a opção no menu do Multitool: Backup NAND Flash ou similar.
+# A TV Box deverá iniciar automaticamente no Multitool.
 
-    O backup será salvo automaticamente no cartão SD, na pasta backups/.
 
-💾 Copiando a imagem do sistema para o cartão (no PC)
+############################################################
+# FAZER BACKUP DA MEMÓRIA INTERNA
+############################################################
 
-Depois do backup:
+# Antes de instalar qualquer sistema, faça um backup.
 
-    Remova o cartão da TV Box e conecte novamente ao PC.
+# No menu do Multitool selecione:
 
-    Você verá uma partição chamada Multitool montada.
+# Backup NAND Flash
 
-    Copie a imagem do sistema (por exemplo, LibreELEC) para a pasta images/.
+# ou opção semelhante.
 
-Exemplo de imagem recomendada:
+# O backup será salvo automaticamente no cartão SD
+# na pasta:
 
-🔗 [LibreELEC](https://github.com/glorioso-tv/LibreELEC/releases/download/LibreELEC/LibreELEC-RK322X.arm-12.0-nightly-20250218-6a1e364-rk322x.img)
-🧩 Instalando o sistema na TV Box
+# backups/
 
-    Coloque o cartão de volta na TV Box.
 
-    Ligue a TV Box com o cartão inserido.
+############################################################
+# COPIANDO A IMAGEM DO SISTEMA PARA O CARTÃO
+############################################################
 
-    No menu do Multitool, selecione a opção Write image to NAND.
+# Depois do backup:
 
-    Escolha a imagem que você copiou para a pasta images/.
+# 1. Retire o cartão da TV Box
+# 2. Conecte novamente no computador
 
-    Aguarde a finalização da gravação e remova o cartão.
+# Você verá uma partição chamada:
 
-✅ Pronto!
+# Multitool
 
-Agora a sua TV Box está com o sistema instalado e pode iniciar direto da NAND com o novo sistema (como LibreELEC).
+# Copie a imagem do sistema para a pasta:
+
+# images/
+
+# Exemplo de imagem recomendada:
+
+# https://github.com/glorioso-tv/LibreELEC/releases/download/LibreELEC/LibreELEC-RK322X.arm-12.0-nightly-20250218-6a1e364-rk322x.img
+
+
+############################################################
+# INSTALANDO O SISTEMA NA TV BOX
+############################################################
+
+# 1. Coloque novamente o cartão na TV Box
+# 2. Ligue a TV Box
+
+# No menu do Multitool selecione:
+
+# Write image to NAND
+
+# Escolha a imagem que você colocou na pasta images/
+
+# Aguarde a instalação terminar.
+
+# Depois remova o cartão SD.
+
+
+############################################################
+# PRONTO
+############################################################
+
+# Agora sua TV Box estará com o sistema instalado
+# e poderá iniciar diretamente da memória interna
+# com o novo sistema (como LibreELEC).
